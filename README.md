@@ -1,6 +1,6 @@
-# headless-jd2-docker
-# forked from https://hub.docker.com/r/plusminus/jdownloader2-headless/
-# i fixed his privilege issue which requires the container to run as root
+## headless-jd2-docker
+## forked from https://hub.docker.com/r/plusminus/jdownloader2-headless/
+## i fixed his privilege issue which requires the container to run as root
 JDownloader 2 Headless Container with my.JDownloader.org Connection
 
 ## Things to in Order to get the best out of this Container
