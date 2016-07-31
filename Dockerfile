@@ -8,11 +8,21 @@ ARG group=jd2
 ARG uid=1000
 ARG gid=1000
 
+# install paxctl
+RUN apt-get update
+RUN apt-get install -yq  paxctl \
+    && rm -rf /var/lib/apt/lists
+
 # add specified user and group and create and chown the install and downloads dir
 RUN groupadd -g ${gid} ${group} \
 	&& useradd -u ${uid} -g ${gid} -m -s /bin/bash ${user} \
 	&& mkdir -p /opt/JDownloader/ /opt/downloads \
 	&& chown -R ${uid}:${group} /opt/JDownloader/ /opt/downloads
+
+
+# (permanent change, by converting the binary headers PT_GNU_STACK into PT_PAX_FLAGS)
+# m: Disable MPROTECT // grsec: denied RWX mmap of <anonymous mapping>
+RUN paxctl -c -v -m /usr/bin/java
 
 # copy the start script to the Container
 COPY startJD2.sh /opt/JDownloader/
