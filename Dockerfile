@@ -5,8 +5,8 @@ MAINTAINER Benjamin Stein <ben-st@diffus.org>
 # the user jd2 will run with and his group
 ARG user=jd2
 ARG group=jd2
-ARG uid=1000
-ARG gid=1000
+ARG uid=943
+ARG gid=943
 
 # install paxctl
 RUN apt-get update
